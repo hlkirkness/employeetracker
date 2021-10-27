@@ -267,9 +267,11 @@ const updateRole = () => {
               },
             ])
             .then((newanswer) => {
+              // letiables for update
               let role_id, employeeId;
               const sql = `SELECT employee.first_name, employee.last_name, employee.id
             FROM employee`;
+              // searching and matching for name
               db.query(sql, (err, res) => {
                 if (err) throw err;
                 for (let i = 0; i < res.length; i++) {
@@ -280,6 +282,7 @@ const updateRole = () => {
                     employeeId = res[i].id;
                   }
                 }
+                // searching and matching for title
                 const sql = `SELECT role.title, role.salary, role.id
                 FROM role`;
                 db.query(sql, (err, res) => {
@@ -333,9 +336,11 @@ const updateManger = () => {
 
         }
       ]).then((answer) => {
+              // letiables for update
               let employeeId;
               const sql = `SELECT employee.first_name, employee.last_name, employee.id
             FROM employee`;
+              // searching and matching for name
               db.query(sql, (err, res) => {
                 if (err) throw err;
                 for (let i = 0; i < res.length; i++) {
